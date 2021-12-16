@@ -10,4 +10,4 @@ docker build . -t forecast_1 -f ./dockerfile
 docker run -v  C:\Users\razbe\stock_project:/app/main -p 8080:8080 -it forecast_1
 
 Then you can access http://localhost:8080/ via browser and use the application.
-HomePage.jpg
+https://github.com/razbengera/Stock_Prediction/blob/cd470a4c0c6a8bf720313e3cd283a1e81309bb22/HomePage.jpg
