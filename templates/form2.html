@@ -1,0 +1,70 @@
+<form class="form-horizontal" action="/getForecast">
+<fieldset>
+      <style>
+    body {
+      background-image: url(https://images.unsplash.com/photo-1559589689-577aabd1db4f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
+    }
+  </style>
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="static/logo2.png" alt="" width="36.5" height="36.66" class="d-inline-block align-top">
+      Stock prediction <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-steps" viewBox="0 0 16 16">
+  <path d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0zM2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
+</svg>
+    </a>
+  </div>
+</nav>
+
+<!-- Form Name -->
+  <div class="py-2 text-center">
+      <img class="d-block mx-auto mb-4" src="static/logo.png" alt="" width="234.86" height="169.86">
+<h2>{{stock}} prediction</h2>
+<h5 >You can see in the boxes the latest available data of "{{stock}}" stock from date: {{date}}. Change it if you are interested and click "Predict".</h5>
+</div>
+    <!-- Text input-->
+<div class="d-flex justify-content-center">
+  <div class="w-25 p-3">
+  <label class="d-flex justify-content-center" for="stock">stock</label><input id="stock" name="stock" type="text" placeholder="{{stock}}" class="form-control input-md border border-primary" required="" value="{{stock}}">
+  <label class="d-flex justify-content-center" for="days">days number</label><select id="days" name="days" class="form-control border border-primary" required="">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+      <label class="d-flex justify-content-center" for="open_price">open price</label><input id="open_price" name="open_price" type="number" step="any" placeholder="{{last_open}}" class="form-control input-md border border-primary" value="{{last_open}}" required="">
+
+      <label class="d-flex justify-content-center" for="high_price">high price</label><input id="high_price" name="high_price" type="number" step="any" placeholder="{{last_high}}" class="form-control input-md border border-primary" value="{{last_high}}" required="">
+
+    <label class="d-flex justify-content-center" for="low_price">low price</label><input id="low_price" name="low_price" type="number" step="any" placeholder="{{last_low}}" class="form-control input-md border border-primary" value="{{last_low}}" required="">
+
+    <label class="d-flex justify-content-center" for="volume">volume</label><input id="volume" name="volume" type="number" step="any" placeholder="{{last_volume}}" class="form-control input-md border border-primary" value="{{last_volume}}" required="">
+
+    <label class="d-flex justify-content-center" for="dividend_amount">dividend amount</label><input id="dividend_amount" name="dividend_amount" type="number" step="any" placeholder="{{dividend_amount}}" class="form-control input-md border border-primary" value="{{dividend_amount}}" required="">
+
+
+  </div>
+</div>
+
+
+<!-- Button -->
+<div class="d-flex justify-content-center">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <label class="d-flex justify-content-center" for="singlebutton"></label>
+  <div class="py-2 text-center">
+    <button id="singlebutton" name="singlebutton" class="btn btn-outline-primary">Predict <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line-fill" viewBox="0 0 16 16">
+  <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z"/>
+</svg></button>
+  </div>
+</div>
+
+</fieldset>
+</form>

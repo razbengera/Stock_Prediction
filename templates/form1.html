@@ -1,0 +1,46 @@
+
+<form class="form-horizontal" action="/getstock">
+<fieldset >
+  <style>
+    body {
+      background-image: url(https://images.unsplash.com/photo-1559589689-577aabd1db4f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
+    }
+  </style>
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="static/logo2.png" alt="" width="36.5" height="36.66" class="d-inline-block align-top">
+      Stock prediction <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-steps" viewBox="0 0 16 16">
+  <path d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0zM2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
+</svg>
+    </a>
+  </div>
+</nav>
+
+<div class="py-2 text-center">
+      <img class="d-block mx-auto mb-4" src="static/logo.png" alt="" width="234.86" height="169.86">
+      <h2>Stock prediction</h2>
+      <h3 class="lead">This page will help you predict a stock price. please insert a stock symbol</h3>
+    </div>
+
+<div class="d-flex justify-content-center">
+  <div class="w-25 p-3">
+  <label class="d-flex justify-content-center" for="stock">insert stock</label><input id="stock" name="stock" type="text" placeholder="{{stock}}" class="form-control input-md border border-primary" required="">
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-center">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <label class="d-flex justify-content-center" for="singlebutton"></label>
+  <div class="py-2 text-center">
+    <button id="singlebutton" name="singlebutton" class="btn btn-outline-primary">Choose <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+  <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+</svg></button>
+    </div>
+</div>
+</div>
+</fieldset>
+</form>

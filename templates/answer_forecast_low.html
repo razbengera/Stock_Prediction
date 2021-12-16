@@ -1,0 +1,95 @@
+
+<html>
+  <style>
+    body {
+      background-image: url(https://images.unsplash.com/photo-1559589689-577aabd1db4f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
+    }
+  </style>
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="static/logo2.png" alt="" width="36.5" height="36.66" class="d-inline-block align-top">
+      Stock prediction <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-steps" viewBox="0 0 16 16">
+  <path d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0zM2 1.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z"/>
+</svg>
+    </a>
+  </div>
+</nav>
+    <body style="text-align: center">
+          <div class="py-2 text-center">
+      <img class="d-block mx-auto mb-4" src="static/logo.png" alt="" width="234.86" height="169.86">
+<h2>{{stock}} prediction</h2>
+</div>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <h1 style=>The last price of {{stock}} stock was: {{adjusted_close}}$</h1>
+    <h1>The expected close price of {{stock}} stock in {{days}} days is:</h1>
+    <div><h2 style="color:red;">{{pred}}$</h2><img src="{{url_for('static', filename='low.png')}}" align="middle" style="width:30px;height:30px;"/>
+    </div>
+    <!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	zoomEnabled: true,
+	theme: "dark2",
+	title:{
+		text: "{{stock}} price graph ($)"
+	},
+	axisX:{
+		title: "Date",
+		valueFormatString: "DD-MM-YYYY",
+	},
+	axisY:{
+		logarithmic: true, //change it to false
+		title: "Price",
+		prefix: "$",
+		titleFontColor: "#6D78AD",
+		lineColor: "#6D78AD",
+		gridThickness: 0,
+		lineThickness: 1,
+		labelFormatter: addSymbols
+	},
+	legend:{
+		verticalAlign: "top",
+		fontSize: 16,
+		dockInsidePlotArea: true
+	},
+	data: [{
+		type: "line",
+		xValueFormatString: "DD-MM-YYYY",
+		yValueFormatString: "$#,##0.##",
+		showInLegend: true,
+		name: "Stock Close Price",
+		dataPoints: [
+			{{data_graph}}
+		]
+
+	}]
+});
+chart.render();
+
+function addSymbols(e){
+	var suffixes = ["", "K", "M", "B"];
+
+	var order = Math.max(Math.floor(Math.log(e.value) / Math.log(1000)), 0);
+	if(order > suffixes.length - 1)
+		order = suffixes.length - 1;
+
+	var suffix = suffixes[order];
+	return CanvasJS.formatNumber(e.value / Math.pow(1000, order)) + suffix;
+}
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
+    </body>
+</html>
