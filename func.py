@@ -32,51 +32,6 @@ def stock_data(stock,outputsize="full"):
                 f.write(r.content)
         else:
             return "ERROR"
-"""
-    try:
-        f = open(os.path.join('data', "willr_{}_{}.csv".format(stock, now)), mode ="r")
-        f.close()
-    except FileNotFoundError:
-        r = requests.get("https://www.alphavantage.co/query?function=WILLR&symbol={}&interval=daily&time_period=10&apikey={}&datatype=csv".format(stock,api))
-        with open(os.path.join('data', "willr_{}_{}.csv".format(stock, now)), mode ="wb") as f:
-            f.write(r.content)
-
-        r = requests.get("https://www.alphavantage.co/query?function=RSI&symbol={}&interval=daily&time_period=10&series_type=open&apikey={}&datatype=csv".format(stock, api))
-        with open(os.path.join('data', "rsi_{}_{}.csv".format(stock, now)), mode="wb") as f:
-            f.write(r.content)
-        time.sleep(20)
-        r = requests.get("https://www.alphavantage.co/query?function=SMA&symbol={}&interval=daily&time_period=10&series_type=open&apikey={}&datatype=csv".format(stock, api))
-        with open(os.path.join('data', "sma_{}_{}.csv".format(stock, now)), mode="wb") as f:
-            f.write(r.content)
-        time.sleep(20)
-        r = requests.get("https://www.alphavantage.co/query?function=EMA&symbol={}&interval=daily&time_period=10&series_type=close&apikey={}&datatype=csv".format(stock, api))
-        with open(os.path.join('data', "ema_{}_{}.csv".format(stock, now)), mode="wb") as f:
-            f.write(r.content)
-
-        r = requests.get("https://www.alphavantage.co/query?function=AD&symbol={}&interval=daily&apikey={}&datatype=csv".format(stock, api))
-        with open(os.path.join('data', "ad_{}_{}.csv".format(stock, now)), mode="wb") as f:
-            f.write(r.content)
-        time.sleep(20)
-        r = requests.get("https://www.alphavantage.co/query?function=OBV&symbol={}&interval=daily&apikey={}&datatype=csv".format(stock, api))
-        with open(os.path.join('data', "obv_{}_{}.csv".format(stock, now)), mode="wb") as f:
-            f.write(r.content)
-        time.sleep(20)
-        r = requests.get("https://www.alphavantage.co/query?function=BBANDS&symbol={}&interval=daily&time_period=5&series_type=close&nbdevup=3&nbdevdn=3&apikey={}&datatype=csv".format(stock, api))
-        with open(os.path.join('data', "bbands_{}_{}.csv".format(stock, now)), mode="wb") as f:
-            f.write(r.content)
-
-        r = requests.get("https://www.alphavantage.co/query?function=AROON&symbol={}&interval=daily&time_period=14&apikey={}&datatype=csv".format(stock, api))
-        with open(os.path.join('data', "aroon_{}_{}.csv".format(stock, now)), mode="wb") as f:
-            f.write(r.content)
-        time.sleep(20)
-        r = requests.get("https://www.alphavantage.co/query?function=ADX&symbol={}&interval=daily&time_period=10&apikey={}&datatype=csv".format(stock, api))
-        with open(os.path.join('data', "adx_{}_{}.csv".format(stock, now)), mode="wb") as f:
-            f.write(r.content)
-        time.sleep(20)
-        r = requests.get("https://www.alphavantage.co/query?function=CCI&symbol={}&interval=daily&time_period=10&apikey={}&datatype=csv".format(stock, api))
-        with open(os.path.join('data', "cci_{}_{}.csv".format(stock, now)), mode="wb") as f:
-            f.write(r.content)
-"""
 
 def get_forecast(stocks):
     stocks = stocks.split(",")
@@ -91,22 +46,6 @@ def last_price(stock,date):
     df["high"] = df["high"] / (df["close"] / df['adjusted_close'])
     df.rename(columns={"timestamp": "time"}, inplace=True)
     df.drop(['close', 'split_coefficient'], axis=1, inplace=True)
-    """
-    ad = pd.read_csv(str(os.path.join('data', "ad_{}_{}.csv".format(stock, date))))
-    adx = pd.read_csv(str(os.path.join('data', "adx_{}_{}.csv".format(stock, date))))
-    aroon = pd.read_csv(str(os.path.join('data', "aroon_{}_{}.csv".format(stock, date))))
-    bbands = pd.read_csv(str(os.path.join('data', "bbands_{}_{}.csv".format(stock, date))))
-    cci = pd.read_csv(str(os.path.join('data', "cci_{}_{}.csv".format(stock, date))))
-    ema = pd.read_csv(str(os.path.join('data', "ema_{}_{}.csv".format(stock, date))))
-    obv = pd.read_csv(str(os.path.join('data', "obv_{}_{}.csv".format(stock, date))))
-    rsi = pd.read_csv(str(os.path.join('data', "rsi_{}_{}.csv".format(stock, date))))
-    sma = pd.read_csv(str(os.path.join('data', "sma_{}_{}.csv".format(stock, date))))
-    willr = pd.read_csv(str(os.path.join('data', "willr_{}_{}.csv".format(stock, date))))
-    data_lst = [ad, adx, aroon, bbands, cci, ema, obv, rsi, sma, willr]
-
-    for i in data_lst:
-        df = pd.merge(left=df, right=i)
-    """
     return list(df.iloc[0])
 
 def prep(stock, date,days):
@@ -117,27 +56,8 @@ def prep(stock, date,days):
     df["high"] = df["high"] / (df["close"] / df['adjusted_close'])
     df.rename(columns={"timestamp": "time"}, inplace=True)
     df.drop(['close', 'split_coefficient'], axis=1, inplace=True)
-    #df["average_price"] = (df["high"] + df["low"]) / 2
-    """
-    #load more data
-    ad = pd.read_csv(str(os.path.join('data', "ad_{}_{}.csv".format(stock, date))))
-    adx = pd.read_csv(str(os.path.join('data', "adx_{}_{}.csv".format(stock, date))))
-    aroon = pd.read_csv(str(os.path.join('data', "aroon_{}_{}.csv".format(stock, date))))
-    bbands = pd.read_csv(str(os.path.join('data', "bbands_{}_{}.csv".format(stock, date))))
-    cci = pd.read_csv(str(os.path.join('data', "cci_{}_{}.csv".format(stock, date))))
-    ema = pd.read_csv(str(os.path.join('data', "ema_{}_{}.csv".format(stock, date))))
-    obv = pd.read_csv(str(os.path.join('data', "obv_{}_{}.csv".format(stock, date))))
-    rsi = pd.read_csv(str(os.path.join('data', "rsi_{}_{}.csv".format(stock, date))))
-    sma = pd.read_csv(str(os.path.join('data', "sma_{}_{}.csv".format(stock, date))))
-    willr = pd.read_csv(str(os.path.join('data', "willr_{}_{}.csv".format(stock, date))))
-    data_lst = [ad,adx,aroon,bbands,cci,ema,obv,rsi,sma,willr]
-
-    for i in data_lst:
-        df = pd.merge(left=df, right=i)
-"""
-#הזזה של הימים אחורה
+    
     df1 = df.copy()
-    #df1["average_price"][days:] = df1["average_price"][0:len(df1["average_price"]) - days]
     df1['adjusted_close'][days:] = df1['adjusted_close'][0:len(df1['adjusted_close']) - days]
 
     drop = list(np.arange(days))
